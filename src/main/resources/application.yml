@@ -1,0 +1,7 @@
+h2:
+  console:
+    enabled: true
+    path: /console
+    settings:
+      trace: false
+      web-allow-others: false
