@@ -5,3 +5,10 @@ h2:
     settings:
       trace: false
       web-allow-others: false
+spring:
+  jpa:
+  show-sql: true
+  mvc:
+    view:
+      prefix: /app/js/
+      suffix: .html
