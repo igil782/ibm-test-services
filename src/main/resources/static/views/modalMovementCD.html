@@ -1,0 +1,40 @@
+<!-- Modal Cliente-->
+<div class="modal fade" id="modalMovementCD" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle1">Mantenimiento Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group">
+                        <label for="idCardMov">Tarjeta</label>
+                        <input type="text" readonly="true" class="form-control" id="idCardMov" ng-model="mov.idCard">
+                        <label for="idMov">Movimiento</label>
+                        <input type="text" readonly="true" class="form-control" id="idMov" ng-model="mov.idMovement">
+                        <label for="fecha">Fecha</label>
+                        <input type="text" class="form-control" id="fecha"  maxlength="50" ng-model="mov.fecha">
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripcion</label>
+                        <input type="text" class="form-control" id="descripcion" maxlength="100"  ng-model="mov.descripcion">
+                    </div>
+                    <div class="form-group">
+                        <label for="valor">Valor</label>
+                        <input type="text" class="form-control" id="valor" maxlength="20"  ng-model="mov.valor">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" ng-click="saveMovement(mov)" data-dismiss="modal">Guardar</button>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -92,11 +92,35 @@ public class CustomerController {
         movementEntity.setDateMovement(movementRequest.getDate());
         if(movementRequest.getIdCard() != null)
             movementEntity.setCard(cardRepository.findById(movementRequest.getIdCard()).get());
-        else
-            movementEntity.setCard(null);
         movementCardRepository.save(movementEntity);
         return true;
     }
-
+    @Transactional
+    public Boolean deleteCard(Long idCard) throws Exception{
+        CustomerEntity customerEntity = customerRepository.findByCardEntitySetIdCard(idCard);
+        customerEntity.getCardEntitySet().forEach(card -> {
+            if(card.getIdCard().equals(idCard))
+                customerEntity.getCardEntitySet().remove(card);
+        });
+        customerRepository.save(customerEntity);
+        movementCardRepository.deleteAll(movementCardRepository.findByCardIdCard(idCard));
+        cardRepository.deleteById(idCard);
+        return true;
+    }
+    @Transactional
+    public Boolean deleteCustomer(Long idCustomer) throws Exception{
+        CustomerEntity customerEntity = customerRepository.findById(idCustomer).get();
+        customerEntity.getCardEntitySet().forEach(card -> {
+            movementCardRepository.deleteAll(movementCardRepository.findByCardIdCard(card.getIdCard()));
+            cardRepository.deleteById(card.getIdCard());
+        });
+        customerRepository.deleteById(idCustomer);
+        return true;
+    }
+    @Transactional
+    public Boolean deleteMovementCard(Long idMovement) throws Exception{
+        movementCardRepository.deleteById(idMovement);
+        return true;
+    }
 
 }
