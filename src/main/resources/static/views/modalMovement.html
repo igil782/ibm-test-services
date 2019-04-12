@@ -1,0 +1,55 @@
+<!-- Modal Cliente-->
+<div class="modal fade" id="modalMovement" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle1">Movimientos</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <button  type="button" class="open-modalNuevoMovement btn btn-light btn-sm"   data-id="{{card}}" data-toggle="modal" data-target="#modalMovementCD">Adicionar</button>
+                <table class="table table-hover ml-3 mr-3">
+                    <thead>
+                    <tr>
+                        <th scope="col">
+                            #
+                        </th>
+                        <th scope="col">
+                            FECHA
+                        </th>
+                        <th scope="col">
+                            DESCRIPCION
+                        </th>
+                        <th scope="col">
+                            VALOR
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody ng-repeat="mov in movements" >
+                    <tr>
+                        <td>
+                            {{mov.idMovement}}
+                        </td>
+                        <td>
+                            {{mov.dateMovement}}
+                        </td>
+                        <td>
+                            {{mov.description}}
+                        </td>
+                        <td>
+                            {{mov.amount}}
+                        </td>
+                        <td>
+                           <button type="button"  class="open-modalEditarMovement btn btn-success btn-sm" data-id="{{mov}}" data-toggle="modal" data-target="#modalMovementCD" >Editar</button>
+                            <button type="button" class="btn btn-danger btn-sm"  ng-click="deleteMovimiento(mov)">Eliminar</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>

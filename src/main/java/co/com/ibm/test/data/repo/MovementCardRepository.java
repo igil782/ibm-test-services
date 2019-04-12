@@ -8,4 +8,5 @@ import java.util.List;
 public interface MovementCardRepository extends CrudRepository<MovementCardEntity, Long> {
 
     List<MovementCardEntity> findByCardIdCard(Long idCard);
+
 }

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Clientes Tarjetas</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="app/js/app.js"></script>
+    <script src="app/js/CustomerController.js"></script>
+    <script src="app/js/CustomerService.js"></script>
+
+    <style>
+a {
+	cursor: pointer;
+	background-color: lightblue;
+}
+</style>
+</head>
+<body>
+<div class="ml-3" >
+    <img src = "img/ibm.png" width="7%" height="3%">
+    <h1>Clientes  BANK - Prueba Ivan Gil</h1>
+
+</div>
+
+<div ng-controller="CustomerCtrl">
+
+    <p style="color: green">{{message}}</p>
+    <p style="color: red">{{errorMessage}}</p>
+
+    <br />
+    <br />
+    <button  ng-click="getAllCustomers()" type="button" class="ml-3 btn btn-primary">Consultar</button>
+    <button  type="submit" class="open-modalNuevoCustomer btn btn-light btn-sm"  data-toggle="modal" data-target="#modalCustomer">Adicionar</button>
+    <br /> <br />
+    <table class="table table-hover ml-3 mr-3">
+        <thead>
+        <tr>
+            <th scope="col">
+                #
+            </th>
+            <th scope="col">
+                NOMBRE
+            </th>
+            <th scope="col">
+                DIRECCION
+            </th>
+            <th scope="col">
+                TELEFONO
+            </th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="cus in customers" >
+            <tr>
+                <td>
+                    {{cus.idCustomer}}
+                </td>
+                <td>
+                    {{cus.name}}
+                </td>
+                <td>
+                    {{cus.address}}
+                </td>
+                <td>
+                    {{cus.telephone}}
+                </td>
+                <td>
+                    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample_{{cus.idCustomer}}" aria-expanded="false" aria-controls="collapseExample">Tarjetas</button>
+                    <button type="button"  class="open-modalEditarCustomer btn btn-success btn-sm" data-id="{{cus}}" data-toggle="modal" data-target="#modalCustomer" >Editar</button>
+                    <button type="button" class="btn btn-danger btn-sm"  ng-click="deleteCustomer(cus.idCustomer)">Eliminar</button>
+                </td>
+            </tr>
+                <tr>
+                <td class="collapse" id="collapseExample_{{cus.idCustomer}}" colspan="5">
+                    <div class="card-group">
+                    <div  ng-repeat="card in cus.cardEntitySet">
+                        <div   class="card border-info mb-3 text-right" style="max-width: 14rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{card.numberCard}}</h5>
+                                <p class="card-text">{{card.typeCardEntity.description}}</p>
+
+                                <button  type="button" ng-click="getMovements(card.idCard)" class="open-modalMovimientos btn btn-success btn-sm" data-id="{{card}}" data-toggle="modal" data-target="#modalMovement" >Movimientos</button>
+                                <button  type="button"  class="open-modalEditarTarjeta btn btn-success btn-sm" data-id="{{card}}" data-toggle="modal" data-target="#modalNuevaTarjeta" >Editar</button>
+                                <button type="button" class="btn btn-danger btn-sm"  ng-click="deleteTarjeta(card)">Eliminar</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                        <div class="card border-info mb-3 text-right" style="max-width: 14rem;">
+                            <img class="card-img" src="img/new_card.png" height="147vw" width="100vw" >
+
+                                <button  type="submit" class="open-modalNuevaTarjeta btn btn-light btn-sm" data-id="{{cus.idCustomer}}" data-toggle="modal" data-target="#modalNuevaTarjeta">Adicionar</button>
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div ng-include="'views/modalCustomer.html'"></div>
+    <div ng-include="'views/modalCard.html'"></div>
+    <div ng-include="'views/modalMovement.html'"></div>
+    <div ng-include="'views/modalMovementCD.html'"></div>
+
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="app/js/util.js"></script>
+
+</body>
+</html>

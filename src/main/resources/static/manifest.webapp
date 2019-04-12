@@ -1,0 +1,10 @@
+{
+  "name": "IBM Test",
+  "description": "IBM Test Ivan Gil",
+  "launch_path": "/index.html",
+,
+  "developer": {
+    "name": "Ivan Gil"
+  },
+  "default_locale": "es"
+}

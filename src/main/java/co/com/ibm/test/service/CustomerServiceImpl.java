@@ -82,4 +82,52 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return responseIBM;
     }
+
+    @Override
+    @RequestMapping(value = PATH_SERVICE_SAVE_CARD,  method = RequestMethod.DELETE)
+    public ResponseIBM deleteCard(@RequestParam Long idCard) {
+        ResponseIBM responseIBM = new ResponseIBM();
+        try{
+            if(customerController.deleteCard(idCard)){
+                responseIBM.setCode("200");
+                responseIBM.setDescription("Delete Correct !!");
+            }
+        }catch(Exception e){
+            responseIBM.setCode("501");
+            responseIBM.setDescription("Exception catch access data !! e ->"+ e.getCause() + " - "+ e.getMessage());
+        }
+        return responseIBM;
+    }
+
+    @Override
+    @RequestMapping(value = PATH_SERVICE_SAVE_CUSTOMER,  method = RequestMethod.DELETE)
+    public ResponseIBM deleteCustomer(@RequestParam Long idCustomer) {
+        ResponseIBM responseIBM = new ResponseIBM();
+        try{
+            if(customerController.deleteCustomer(idCustomer)){
+                responseIBM.setCode("200");
+                responseIBM.setDescription("Delete Correct !!");
+            }
+        }catch(Exception e){
+            responseIBM.setCode("501");
+            responseIBM.setDescription("Exception catch access data !! e ->"+ e.getCause() + " - "+ e.getMessage());
+        }
+        return responseIBM;
+    }
+
+    @Override
+    @RequestMapping(value = PATH_SERVICE_SAVE_MOVEMENT,  method = RequestMethod.DELETE)
+    public ResponseIBM deleteMovement(@RequestParam Long idMovement) {
+        ResponseIBM responseIBM = new ResponseIBM();
+        try{
+            if(customerController.deleteMovementCard(idMovement)){
+                responseIBM.setCode("200");
+                responseIBM.setDescription("Delete Correct !!");
+            }
+        }catch(Exception e){
+            responseIBM.setCode("501");
+            responseIBM.setDescription("Exception catch access data !! e ->"+ e.getCause() + " - "+ e.getMessage());
+        }
+        return responseIBM;
+    }
 }
