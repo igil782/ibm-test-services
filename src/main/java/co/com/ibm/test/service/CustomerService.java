@@ -14,7 +14,7 @@ import java.util.List;
 public interface CustomerService {
     String PATH_SERVICE_LIST_CUSTOMER = "customer/list";
     String PATH_SERVICE_LIST_MOVEMENTS = "customer/movement/list";
-    String PATH_SERVICE_SAVE_CUSTOMER = "customer/";
+    String PATH_SERVICE_SAVE_CUSTOMER = "customer";
     String PATH_SERVICE_SAVE_CARD = "customer/card";
     String PATH_SERVICE_SAVE_MOVEMENT = "customer/movement";
 
@@ -24,4 +24,7 @@ public interface CustomerService {
     ResponseIBM saveCustomer(CustomerRequest customerRequest);
     ResponseIBM saveCard(CardRequest cardRequest);
     ResponseIBM saveMovementCardCustomer(MovementRequest movementRequest);
+    ResponseIBM deleteCard(Long idCard);
+    ResponseIBM deleteCustomer(Long idCustomer);
+    ResponseIBM deleteMovement(Long idMovement);
 }

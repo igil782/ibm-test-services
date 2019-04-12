@@ -1,0 +1,48 @@
+<!-- Modal Nueva tarjeta-->
+<div class="modal fade" id="modalNuevaTarjeta" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Mantenimiento tarjeta</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group">
+                        <label for="tarje">ID</label>
+                        <input type="text" readonly="true" class="form-control" id="tarje" ng-model="tarjeta.idCard">
+                        <label for="idCliente">Cliente</label>
+                        <input type="text" readonly="true" class="form-control" id="idCliente" ng-model="tarjeta.idCliente">
+                        <label for="numberTarjeta">Numero Tarjeta</label>
+
+                        <div class="input-group">
+
+                            <input type="text" class="form-control" id="numberTarjeta"  maxlength="4" ng-model="tarjeta.number1">
+                            <input type="text" class="form-control" id="numberTarjeta1" maxlength="4" ng-model="tarjeta.number2">
+                            <input type="text" class="form-control" id="numberTarjeta2" maxlength="4" ng-model="tarjeta.number3">
+                            <input type="text" class="form-control" id="numberTarjeta3" maxlength="4" ng-model="tarjeta.number4">
+                        </div>
+                        <small id="emailHelp" class="form-text text-muted">16 digitios</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ccv">CCV </label>
+                        <input type="password" class="form-control" id="ccv" placeholder="CCV " maxlength="4"  ng-model="tarjeta.ccv">
+                    </div>
+                    <div class="form-group">
+                        <label for="tipoTarjeta">Tipo</label>
+                        <input type="text" class="form-control" id="tipoTarjeta" maxlength="1"  ng-model="tarjeta.tipo">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary" ng-click="addTarjeta(tarjeta)" data-dismiss="modal">Guardar</button>
+
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
