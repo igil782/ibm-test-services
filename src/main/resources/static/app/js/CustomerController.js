@@ -44,7 +44,7 @@ app.controller('CustomerCtrl', ['$scope','CustomerService', function ($scope,Cus
     }
     $scope.saveMovement = function (mov) {
         $scope.mov = mov;
-    alert('tarjeta ' + JSON.stringify(mov));
+
         if ($scope.mov != null && $scope.mov.valor ) {
             CustomerService.saveMovement($scope.mov.idMovement, $scope.mov.idCard, $scope.mov.fecha, $scope.mov.descripcion, $scope.mov.valor)
               .then (function success(response){
